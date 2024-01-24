@@ -13,35 +13,24 @@ import { Button } from '@/components/ui/button';
   return (
 
     <div className='border-2 border-gray-100/50 mx-auto max-w-md shadow-sm mt-10 pb-10'>
-      <h1 className='text-center text-4xl text-orange-700/90 font-extrabold mt-10'> Login </h1>
+      <h1 className='text-center text-4xl text-orange-700/90 font-extrabold mt-10'> Send Verification mail </h1>
       <form
       className='flex flex-col max-w-xs  mx-auto  justify-center items-center space-y-6 mt-10'>
        
+       
+        
         <Input
         type="email" 
         name="email"
         placeholder='Enter your email' 
-        className=''    
-         />
-        
-        <Input
-        type="password" 
-        name="password"
-        placeholder='password' 
         className='' 
-        minLength={8} />
+         />
          
-            <div>
-              <Link className="underline text-blue-900 text-sm ml-0" href="/register">
-                Forget Password ?
-              </Link>
-            </div>
-  
-
 
             <Button
+             variant="destructive" 
              className={`w-full bg-orange-700`}   
-            > Login  </Button>
+            > Send  </Button>
       </form>
     </div>
 
