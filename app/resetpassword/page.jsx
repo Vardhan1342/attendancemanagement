@@ -40,7 +40,8 @@ import { Button } from '@/components/ui/button';
 
 
             <Button
-             className={`w-full bg-orange-700`}   
+            variant="custom"
+             className={`w-full`}   
             > Reset  </Button>
       </form>
     </div>

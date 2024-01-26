@@ -28,8 +28,8 @@ import { Button } from '@/components/ui/button';
          
 
             <Button
-             variant="destructive" 
-             className={`w-full bg-orange-700`}   
+             variant="custom" 
+             className={`w-full`}   
             > Send  </Button>
       </form>
     </div>

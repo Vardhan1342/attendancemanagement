@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useTransition } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 
  const Page = () => {
   
+  const [isPending,startTransistion]=useTransition();
 
   return (
 
@@ -40,7 +41,10 @@ import { Button } from '@/components/ui/button';
 
 
             <Button
-             className={`w-full bg-orange-700`}   
+            type="submit"
+            disable={isPending}
+            variant={`${isPending? "secondary" :"custom"}`}
+             className={`w-full`}   
             > Login  </Button>
       </form>
     </div>
