@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
+import { auth, signOut } from '@/auth';
 
 
 const tabs=[
@@ -23,7 +24,9 @@ const tabs=[
     },
 ]
 
-const Header = () => {
+const Header = async() => {
+    const sessions=await auth();
+    console.log(sessions)
   return (
     <div className='bg-white flex h-20 p-4 md:p-8 justify-between items-center'>
         <div className='flex items-end md:w-1/2 md:justify-between'>
@@ -48,12 +51,19 @@ const Header = () => {
                     ))}            
                 </div>
         </div>
+        <form
+          action={async () => {
+            'use server';
+            await signOut();
+          }}
+        >
         <Button
         variant="custom"
         className="md:mr-20"
         >
             Logout
         </Button>
+        </form>
     </div>
   );
 }
