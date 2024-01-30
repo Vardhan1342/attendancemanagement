@@ -13,7 +13,7 @@ if(!sessions){
   return (
     <main className="">
         <Header />
-           
+      <div>{JSON.stringify(sessions)}</div>
     </main>
   );
 }

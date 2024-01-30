@@ -26,7 +26,7 @@ const tabs=[
 
 const Header = async() => {
     const sessions=await auth();
-    console.log(sessions)
+    console.log(sessions.user);
   return (
     <div className='bg-white flex h-20 p-4 md:p-8 justify-between items-center'>
         <div className='flex items-end md:w-1/2 md:justify-between'>
@@ -54,7 +54,13 @@ const Header = async() => {
         <form
           action={async () => {
             'use server';
-            await signOut();
+            try{
+
+                await signOut();
+            }
+            catch(error){
+                    throw error;
+            }
           }}
         >
         <Button

@@ -13,11 +13,20 @@ import { login } from '@/actions/login';
   
   const [isPending,startTransistion]=useTransition();
   const [info,setInfo]=useState({email:"",password:""});
+  const [error,setError]=useState("")
   const handlechange=(e)=>{
     setInfo((prev)=>({...prev,[e.target.name]:e.target.value}))
   }
   const handlesubmit=()=>{
-    login(info).then(()=>console.log("logged in")).catch(err=>console.log("error occured"))
+    login(info).then((res)=>{
+
+      if(res=="Credintial invalid"){
+                setError(res)
+      }
+    }
+    ).catch(err=>{
+      
+    })
   }
   const [errorMessage, dispatch] = useFormState(handlesubmit, undefined);
 
@@ -76,7 +85,7 @@ import { login } from '@/actions/login';
           className="flex h-8 items-end space-x-1"
          
         >
-          {errorMessage && (
+          {error && (
             <>
               <div className="h-5 w-5 text-red-500" ></div>
               <p className="text-sm text-red-500">{errorMessage}</p>
@@ -100,7 +109,7 @@ function LoginButton() {
   const { pending } = useFormStatus();
  
   return (
-    <Button className="mt-4 w-full" aria-disabled={pending}>
+    <Button variant="custom" className="mt-4 w-full" aria-disabled={pending}>
       Log in 
     </Button>
   );

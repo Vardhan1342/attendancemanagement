@@ -8,16 +8,19 @@ export const login=async(formData)=>{
         console.log(formData);
         try{     
                 console.log("before");
-                const result = await signIn("credentials", {
+              const res=  await signIn("credentials", {
                         email: formData.email,
                         password: formData.password,
-                        redirectTo:"/",
+                        redirectTo:"/"
                       });
-                  
-                    console.log(result)
+                  console.log("result is ",res);
+                   console.log();
         }
         catch(error){
-                console.log(error);
+                if(error){
+                        return ("Credintial invalid")
+                }
+                throw error;
         }
               
 }
