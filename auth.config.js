@@ -2,7 +2,7 @@ import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { Admin } from './models/Admin';
 import { connectToDB } from './db/connectToDb';
-const getUser=async(email,password)=>{
+export const getUser=async(email)=>{
     try{
         connectToDB();
         const user =await Admin.findOne({email});
@@ -12,7 +12,7 @@ const getUser=async(email,password)=>{
 		 throw new Error("user not exists") 
     }
     catch(error){
-            throw "user not exits"
+            throw new Error("user not exits")
     }
       
 }
@@ -30,11 +30,11 @@ export const authConfig = {
                 console.log("Recieved credinatials")
 				try{
 
-					let userx=await getUser(email,password);
+					let userx=await getUser(email);
 					const user=userx.toJSON();
 					if(user){
 						console.log(user)
-						return user;
+						return {email:user.email};
 					}
 					else{
 						return null;

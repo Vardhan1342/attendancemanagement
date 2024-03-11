@@ -20,7 +20,7 @@ const tabs=[
     },
     {
         name:"Devices",
-        href:"/users"
+        href:"/device"
     },
 ]
 

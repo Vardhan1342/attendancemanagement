@@ -79,6 +79,7 @@ import { login } from '@/actions/login';
               />
             </div>
           </div>
+          <Link href="/resetpassword" className='text-xs text-blue-700 underline '>Forgot Password?</Link>
         </div>
         <LoginButton />
         <div
@@ -105,7 +106,7 @@ export default Page;
 
 
 
-function LoginButton() {
+export function LoginButton() {
   const { pending } = useFormStatus();
  
   return (

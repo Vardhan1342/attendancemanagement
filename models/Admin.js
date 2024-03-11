@@ -9,7 +9,13 @@ const adminschema=new Schema({
         type:String,
         required:[true,"password is required"]
 
+    },
+    role:{
+        type:String,
+        enum:["user","admin"],
+        default:"admin"
     }
+},{
+    timestamps:true
 })
-
 export const Admin=models?.Admin || model("Admin",adminschema);
